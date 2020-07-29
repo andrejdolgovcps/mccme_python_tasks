@@ -22,16 +22,16 @@ from builtins import *
 # ## Задача A
 # Вычислите $2^{179}$. Выведите на экран вычисленное значение.
 
-# In[ ]:
+# In[1]:
 
 
-print(2 ** 179)
+2 ** 179
 
 
 # ## Задача B
 # Вычислите 20!. Выведите на экран вычисленное значение.
 
-# In[ ]:
+# In[2]:
 
 
 n = 1
@@ -41,6 +41,18 @@ print(n)
 
 # from math import factorial
 # print(factorial(20))
+
+
+# Вариант 2: рекурсия
+
+# In[4]:
+
+
+def recursion(n):
+    if n == 1:
+        return 1
+    return n * recursion(n - 1)
+recursion(20)
 
 
 # ## Задача C
@@ -111,22 +123,15 @@ print(sqrt(a ** 2 + b ** 2))
 # Даны три целых числа. Найдите наибольшее из них (программа должна вывести ровно одно целое число).
 # Какое наименьшее число операторов сравнения (>, <, >=, <=) необходимо для решения этой задачи?
 
-# In[ ]:
+# In[7]:
 
 
 # insert three integers separated by commas
 a, b, c = [int(i) for i in input().split(',')]
-
-if a >= b:
-    if a >= c:
-        print(a)
-    else:
-        print(c)
+if a > b:
+    print(a) if a > c else print(c)
 else:
-    if b >= c:
-        print(b)
-    else:
-        print(c)
+    print(b) if b > c else print(c)
 
 
 # ## Задача J
@@ -141,7 +146,7 @@ a, b, c = [int(i) for i in input().split(',')]
 
 d = max(a, b, c)
 
-print("YES" if a + b + c > 2 * d else "NO")
+print('YES' if a + b + c > 2 * d else 'NO')
 
 
 # ## Задача K
@@ -153,18 +158,16 @@ print("YES" if a + b + c > 2 * d else "NO")
 # insert four integers separated by commas
 x1, y1, x2, y2 = [int(i) for i in input().split(',')]
 
-print("YES" if (x1 == x2 or y1 == y2) else "NO")
+print('YES' if (x1 == x2 or y1 == y2) else 'NO')
 
 
 # ## Задача L
 # Число $179^{10}$ записали четыре раза подряд. Из получившегося числа извлекли корень степени 10. Сколько получилось?
 
-# In[ ]:
+# In[12]:
 
 
-a = int(pow(179, 10))
-b = int(str(a) * 4)
-print(pow(b, 0.1))
+pow(int(str(pow(179, 10)) * 4), 0.1)
 
 
 # ## Задача M
@@ -176,9 +179,9 @@ print(pow(b, 0.1))
 year = int(input())
 
 if ((year % 4 == 0) and (year % 100 != 0)) or (year % 400 == 0):
-    print("YES")
+    print('YES')
 else:
-    print("NO")
+    print('NO')
 
 
 # # Задача N
@@ -193,5 +196,5 @@ row1, col1, row2, col2 = [int(i) for i in input().split(',')]
 horse_steps = [(-2, 1), (-1, 2), (1, 2), (2, 1),
                (2, -1), (1, -2), (-1, -2), (-2, -1)]
 
-print("YES" if (row2 - row1, col2 - col1) in horse_steps else "NO")
+print('YES' if (row2 - row1, col2 - col1) in horse_steps else 'NO')
 
