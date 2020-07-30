@@ -14,7 +14,7 @@
 # # Задачи к уроку 3
 # http://informatics.mccme.ru/mod/statements/view.php?id=16206#1
 
-# In[12]:
+# In[ ]:
 
 
 # Python 2 and 3 compatibility
@@ -27,7 +27,7 @@ from builtins import *
 # ## Задача A
 # Даны два целых числа A и B (при этом A $\leq$ B). Выведите все числа от A до B включительно.
 
-# In[14]:
+# In[2]:
 
 
 a = int(input())
@@ -39,47 +39,58 @@ for i in range(a, b + 1):
 # ## Задача B
 # По данному натуральном n вычислите сумму $1^2+2^2+3^2+ \ldots +n^2$.
 
-# In[16]:
+# In[3]:
 
 
 n = int(input())
 sum = 0
 for i in range(1, n+1):
-  sum = sum + i**2
+  sum += i**2
 print(sum)
 
 
 # ## Задача C
 # По данному целому неотрицательному n вычислите значение n!.
 
-# In[17]:
+# In[21]:
 
 
 import math
-n = int(input())
+n = input()
 res = math.factorial(n)
 print(res)
+
+
+# Второй способ - собственная реализация факториала
+
+# In[6]:
+
+
+n = int(input())
+
+def fac(n):
+    if n == 0:
+        return 1
+    return fac(n-1) * n
+fac(n)
 
 
 # ## Задача D
 # По данным целым неотрицательным n и k вычислите значение числа сочетаний из n элементов по k, то есть $\frac{n!}{k!(n-k)!}$.
 
-# In[19]:
+# In[9]:
 
 
-n = int(input('n = '))
-k = int(input('k = '))
-nf = 1
-kf = 1
-nkf = 1
-for i in range(1, n+1):
-  nf = nf * i
-for i in range(1, k+1):
-  kf = kf * i
-for i in range(1, n-k+1):
-  nkf = nkf * i
-c = nf / kf / nkf
-print("c = ", c)
+n = int(input())
+k = int(input())
+
+def fac(n):
+    if n == 0:
+        return 1
+    return fac(n-1) * n
+
+c = fac(n)/(fac(k)*fac(n-k))
+print(c)
 
 
 # ## Задача E
@@ -97,7 +108,7 @@ penguine = ["   _~_    ",
             "  ^^ ^^   "]
 
 
-# In[20]:
+# In[26]:
 
 
 penguine = ["   _~_    ",
@@ -114,7 +125,7 @@ for i in range(len(penguine)):
 # ## Задача F
 # Шоколадка имеет вид прямоугольника, разделенного на n×m долек. Шоколадку можно один раз разломить по прямой на две части. Определите, можно ли таким образом отломить от шоколадки ровно k долек.
 
-# In[21]:
+# In[11]:
 
 
 n = int(input())
@@ -129,44 +140,46 @@ else:
 # ## Задача G
 # Дано линейное уравнение $ax + b = 0$. Решите уравнение, напечатайте ответ. Если ответов бесконечно много, выведите "INF", если их нет - "NO".
 
-# In[26]:
+# In[21]:
 
 
-a = float(input())
-b = float(input())
+a = int(input())
+b = int(input())
 
 if (a == 0 and b == 0):
     print('INF')
 elif (a == 0 and b !=0):
     print('NO')
 else: 
-    print(float(-b) / float(a))
+    print(round((-b) / (a), 2))
 
 
 # ## Задача H
 # Для данного числа n < 100 закончите фразу “На лугу пасется...” одним из возможных продолжений: “n коров”, “n корова”, “n коровы”, правильно склоняя слово “корова”.
 
-# In[27]:
+# In[37]:
 
 
 n = int(input())
+name = 'коров'
+
 if n >= 11 and n <= 14:
-        print(n, 'korov')
+        print(f'{n} {name}')
 else:
         temp = n % 10
         if temp == 0 or (temp >= 5 and temp <= 9):
-                print(n, 'korov')
+                print(f'{n} {name}')
         if temp == 1:
-                print(n, 'korova')
+                print(f'{n} {name}а')
         if temp >=2 and temp <=4:
-                print(n, 'korovy')
+                print(f'{n} {name}ы')
 
 
 # # Задача I. Диофантово уравнение
 
 # Даны числа a, b, c, d. Выведите в порядке возрастания все целые числа от 0 до 1000, которые являются корнями уравнения $ax^3+bx^2+cx+d=0$.
 
-# In[ ]:
+# In[35]:
 
 
 
@@ -175,28 +188,42 @@ else:
 # ## Задача J
 # Квадрат трехзначного числа оканчивается тремя цифрами, равными этому числу. Найдите и выведите все такие числа.
 
-# In[ ]:
+# In[38]:
 
 
-## Ваш код здесь
+print(*(i for i in range(100,1000) if str(pow(i, 2)).endswith(str(i))))
 
 
 # ## Задача K
 # По данному натуральному $n \leq 9$ выведите лесенку из n ступенек, i-я ступенька состоит из чисел от 1 до i без пробелов.
 
-# In[ ]:
+# In[39]:
 
 
-## Ваш код здесь
+n = int(input())
+
+for i in range(n):
+    for j in range(1, i+2):
+        print(j, end='')
+    print()
 
 
 # ## Задача L
 # Дано три числа. Упорядочите их в порядке неубывания. Программа должна считывать три числа a, b, c, затем программа должна менять их значения так, чтобы стали выполнены условия $a \leq b \leq c$, затем программа выводит тройку a, b, c.
 
-# In[ ]:
+# In[40]:
 
 
-## Ваш код здесь
+a = int(input())
+b = int(input())
+c = int(input())
+if a > b:
+    a, b = b, a
+if b > c:
+    b, c = c, b
+if a > b:
+    a, b = b, a
+print(a, b, c)
 
 
 # ## Задача M
