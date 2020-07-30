@@ -193,8 +193,15 @@ else:
 # insert four integers separated by commas
 row1, col1, row2, col2 = [int(i) for i in input().split(',')]
 
-horse_steps = [(-2, 1), (-1, 2), (1, 2), (2, 1),
-               (2, -1), (1, -2), (-1, -2), (-2, -1)]
+if (row1<=8 and col1<=8 and row2<=8 and col2<=8):
+    horse_shift = (abs(row2 - row1), abs(col2 - col1))
+    print('YES') if horse_shift == (1, 2) or horse_shift == (2, 1) else print('NO')
+else: 
+    print('Вы вышли за пределы доски')
 
-print('YES' if (row2 - row1, col2 - col1) in horse_steps else 'NO')
+
+# In[ ]:
+
+
+
 
