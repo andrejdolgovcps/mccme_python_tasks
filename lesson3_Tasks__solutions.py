@@ -241,7 +241,7 @@ print(a, b, c)
 
 
 n = int(input())
-n1 = 15
+n1 = 15 
 n10 = 125
 n60 = 440
 
