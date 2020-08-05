@@ -196,17 +196,24 @@ else:
 # ## Задача J
 # Квадрат трехзначного числа оканчивается тремя цифрами, равными этому числу. Найдите и выведите все такие числа.
 
-# In[38]:
+# In[20]:
 
 
-print(*(i for i in range(100,1000) if str(pow(i, 2)).endswith(str(i))))
+for n in range(100, 1000):
+    if (n ** 2) % 1000 == n:
+        print(n)
 
 
 # ## Задача K
 # По данному натуральному $n \leq 9$ выведите лесенку из n ступенек, i-я ступенька состоит из чисел от 1 до i без пробелов.
 
-# In[39]:
+# In[25]:
 
+
+from time import time
+ 
+ 
+tic = time()
 
 n = int(input())
 
@@ -214,6 +221,31 @@ for i in range(n):
     for j in range(1, i+2):
         print(j, end='')
     print()
+    
+toc = time()
+print() 
+print(toc - tic)
+
+
+# Реализация со строками:
+
+# In[9]:
+
+
+from time import time
+ 
+ 
+tic = time()
+
+n=int(input())
+s=""
+for i in range (n):
+    s=s+str(n-n+i+1)
+    print(s)
+    
+toc = time()
+print() 
+print(toc - tic)
 
 
 # ## Задача L
